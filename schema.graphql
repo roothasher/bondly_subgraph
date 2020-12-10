@@ -1,0 +1,20 @@
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+  newVersion: Bytes! # address
+}
+
+type Tran @entity {
+  id: ID!
+  value: BigInt!
+  from: Bytes!
+  to: Bytes!
+  timestamp: BigInt
+}
+
+type Approv @entity {
+  id: ID!
+  value: BigInt!
+  spender: Bytes!
+  timestamp: BigInt
+}

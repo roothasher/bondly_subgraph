@@ -1,0 +1,32 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: BONDLY
+    network: mainnet
+    source:
+      address: "0x83984d6142934bb535793a82adb0a46ef0f66b6d"
+      abi: BONDLY
+      startBlock: 11405653
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - UpgradeProposal
+        - Transfer
+        - Approval
+        - Tran
+        - Approv
+      abis:
+        - name: BONDLY
+          file: BONDLY\abis\BONDLY.json
+      eventHandlers:
+        - event: UpgradeProposal(address)
+          handler: handleUpgradeProposal
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+      file: BONDLY\BONDLY.wasm
